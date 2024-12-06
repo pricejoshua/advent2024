@@ -20,12 +20,22 @@ def check_x_mas(grid, x, y):
 
         string = grid[x-1][y-1] + grid[x-1][y+1] + grid[x+1][y-1] + grid[x+1][y+1]
 
-        if (string.count('M') == 2 and string.count('S') == 2):
+        if (string.count('M') == 2 and string.count('S') == 2 and grid[x-1][y-1] != grid[x+1][y+1] ):
+            print("[", x-1, y-1, "]", "[", x-1, y+1, "]", "[", x+1, y-1, "]", "[", x+1, y+1, "]")
+            # print(grid[x-1][y-1], grid[x-1][y+1], grid[x+1][y-1], grid[x+1][y+1])
+            # print(grid[x-1][y-1], grid[x+1][y-1], "\n", grid[x-1][y+1], grid[x+1][y+1])
+            for i in range(-1,2):
+                for j in range(-1,2):
+                    if (j == 0 or i == 0):
+                        print("*", end = " ")
+                    else:
+                        print(grid[x+i][y+j], end = " ")
+                print()
             return True
 
 
 
-with open('day4/input2.txt') as f:
+with open('day4/input.txt') as f:
     grid = []
     input = f.read()
     for line in input.split("\n"):
